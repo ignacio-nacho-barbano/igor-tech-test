@@ -1,0 +1,20 @@
+{
+    "name": "igor-tech-test",
+    "description": "Nacho's resolution of Igor's tech test for the Dymium interview process.",
+    "authors": "github.com/ignacio-nacho-barbano",
+    "version": "1.0.0",
+    "main": "pathToMain",
+    "type": "module",
+    "scripts": {
+        "reverse": "node dist/reverse.js",
+        "unique": "node dist/unique-words.js",
+        "test": "ts-node-test tests/",
+        "test-node": "node --test tests/",
+        "build": "tsc"
+    },
+    "devDependencies": {
+        "@types/node": "^18.15.13",
+        "tslib": "^2.5.0",
+        "typescript": "^5.0.4"
+    }
+}
