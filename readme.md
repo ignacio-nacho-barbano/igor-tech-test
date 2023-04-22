@@ -1,7 +1,6 @@
 # This is Nacho's Tech Interview Tests
 
-. To test the exercises you must first run `npm i`,
-. Then run `npm run build` to build ts files into executable trough node js files
+. To test the exercises you must first run `npm i`
 
 ## The First Exercise Proposed Was a Custom Reverse Implementation
 
@@ -11,7 +10,7 @@
 
 To see this run the command `npm run reverse`
 
-## The Second Was a Unique Word Finder
+## The Second Was a Unique Word Finder, equivalent to a custom Set
 
 2. Write a function in JavaScript or TypeScript that takes a string of text as a parameter that returns the count of unique words.
 
@@ -20,7 +19,6 @@ To see this run the command `npm run unique`
 ## Tests
 
 You can also test these files to make sure they are working properly
-in a few differrent scenarios, as well as to maintain quality if the
-code is changed in the future.
+in a few differrent scenarios once changes are made.
 
 To test the functions run the command `npm test`

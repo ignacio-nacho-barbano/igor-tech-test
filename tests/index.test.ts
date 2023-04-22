@@ -1,9 +1,9 @@
-import assert from "node:assert";
-import { describe } from "node:test";
-import { reverseArray } from "../src/reverse.js";
-import { findUniqueWords } from "../src/unique-words.js";
+import assert from 'node:assert';
+import { describe } from 'node:test';
+import { reverseArray } from '../src/reverse.js';
+import { findUniqueWords } from '../src/unique-words.js';
 
-describe("reverseArray function", () => {
+describe('reverseArray function', () => {
   assert.strictEqual(
     reverseArray([55, 32, 44, 58, 127, 99]).toString(),
     [99, 127, 58, 44, 32, 55].toString(),
@@ -29,7 +29,7 @@ describe("reverseArray function", () => {
   );
 });
 
-describe("findUniqueWords function", () => {
+describe('findUniqueWords function', () => {
   assert.strictEqual(
     findUniqueWords([]).toString(),
     [].toString(),
@@ -37,31 +37,31 @@ describe("findUniqueWords function", () => {
   );
 
   assert.strictEqual(
-    findUniqueWords(["audio"]).toString(),
-    ["audio"].toString(),
+    findUniqueWords(['audio']).toString(),
+    ['audio'].toString(),
     `it should return the whole array if the array contains only one word`
   );
 
   assert.strictEqual(
-    findUniqueWords(["audio", "radio", "video"]).toString(),
-    ["audio", "radio", "video"].toString(),
+    findUniqueWords(['audio', 'radio', 'video']).toString(),
+    ['audio', 'radio', 'video'].toString(),
     `it should return the whole array if it does not contain any repeated word`
   );
 
   assert.strictEqual(
-    findUniqueWords(["audio", "radio", "video"]).toString(),
-    ["audio", "radio", "video"].toString(),
+    findUniqueWords(['audio', 'radio', 'video']).toString(),
+    ['audio', 'radio', 'video'].toString(),
     `it should return the whole array if it does not contain any repeated word`
   );
 
   assert.strictEqual(
     findUniqueWords([
-      "audio",
-      "radio",
-      "video",
-      "audio",
-      "radio",
-      "video",
+      'audio',
+      'radio',
+      'video',
+      'audio',
+      'radio',
+      'video',
     ]).toString(),
     [].toString(),
     `it should return an empty array given there are no unique words`
@@ -69,15 +69,15 @@ describe("findUniqueWords function", () => {
 
   assert.strictEqual(
     findUniqueWords([
-      "audio",
-      "audio",
-      "audio",
-      "internet",
-      "radio",
-      "vide",
-      "internet",
+      'audio',
+      'audio',
+      'audio',
+      'internet',
+      'radio',
+      'vide',
+      'internet',
     ]).toString(),
-    [["radio", "vide"]].toString(),
-    "it should return only the words that do not repeat given any sort of repetitions"
+    [['radio', 'vide']].toString(),
+    'it should return only the words that do not repeat given any sort of repetitions'
   );
 });

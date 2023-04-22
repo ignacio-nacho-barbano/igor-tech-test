@@ -6,8 +6,8 @@
     "main": "pathToMain",
     "type": "module",
     "scripts": {
-        "reverse": "node dist/reverse.js",
-        "unique": "node dist/unique-words.js",
+        "reverse": "tsc && node dist/reverse.js",
+        "unique": "tsc && node dist/unique-words.js",
         "test": "ts-node-test tests/",
         "test-node": "node --test tests/",
         "build": "tsc"

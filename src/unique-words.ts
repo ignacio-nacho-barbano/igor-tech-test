@@ -1,5 +1,11 @@
-console.log("Welcome to the technical exercise #2: findUniqueWords");
+console.log('Welcome to the technical exercise #2: findUniqueWords');
 console.log();
+
+/*
+  This function was implemented assuming we don't want to just use
+  the JS native way for this excercise which would be
+  export const findUniqueWords = (words: string[]) => [...(new Set(words))];
+*/
 
 export const findUniqueWords = (words: string[]) => {
   const uniqueWords: string[] = [];
@@ -21,32 +27,42 @@ export const findUniqueWords = (words: string[]) => {
 
 // Code below has the only purpose of showing some examples on the console
 const examples: string[][] = [
-  ["pepe", "ramon"],
-  ["pepe", "ramon", "pepe"],
-  ["pepe", "ramon", "pepe", "ramon"],
-  ["pepe", "ramon", "pepe", "otra"],
-  ["audio", "video", "radio", "internet"],
+  ['mono'],
+  ['mono', 'mono'],
+  ['rhcp', 'muse'],
+  ['rhcp', 'muse', 'rhcp'],
+  ['rhcp', 'muse', 'rhcp', 'muse'],
+  ['rhcp', 'muse', 'rhcp', 'soundgarden'],
+  ['audio', 'video', 'radio', 'internet'],
   [
-    "audio",
-    "audio",
-    "audio",
-    "audio",
-    "video",
-    "radio",
-    "internet",
-    "audio",
-    "internet",
-    "audio",
-    "internet",
-    "audio",
-    "internet",
+    '💩',
+    '💩',
+    '💩',
+    '💩',
+    '🌎',
+    '🌳',
+    '🦖',
+    '💩',
+    '🦖',
+    '💩',
+    '🦖',
+    '💩',
+    '🦖',
   ],
 ];
 
 examples.forEach((example, i) => {
   const unique = findUniqueWords(example);
 
-  console.log(`given the array n#${i} being the following: `, example);
-  unique.length ? console.log("the words", unique) : console.log("no words");
+  console.log(`given the array n#${i} being:`);
+  console.log(example);
+
+  if (unique.length > 1) {
+    console.log('the following words', unique, 'are unique');
+  } else if (unique.length === 1) {
+    console.log('the following word', unique, 'is unique');
+  } else {
+    console.log('no words are unique in this array');
+  }
   console.log();
 });
