@@ -29,7 +29,7 @@ type EngLangByte = NumericRange<32, 127>;
 
 /*
   This function was implemented assuming we don't want to just use
-  the JS native way for this excercise which would be
+  the JS native way for this exercise which would be
   export const reverseArray = (array: EngLangByte[]) => array.reverse();
 */
 

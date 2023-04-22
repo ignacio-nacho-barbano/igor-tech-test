@@ -3,7 +3,7 @@ console.log();
 
 /*
   This function was implemented assuming we don't want to just use
-  the JS native way for this excercise which would be
+  the JS native way for this exercise which would be
   export const findUniqueWords = (words: string[]) => [...(new Set(words))];
 */
 

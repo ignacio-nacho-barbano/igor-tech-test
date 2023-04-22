@@ -1,6 +1,6 @@
 # This is Nacho's Tech Interview Tests
 
-. To test the exercises you must first run `npm i`
+. To run and test the exercises you must first run `npm i`
 
 ## The First Exercise Proposed Was a Custom Reverse Implementation
 
@@ -19,6 +19,6 @@ To see this run the command `npm run unique`
 ## Tests
 
 You can also test these files to make sure they are working properly
-in a few differrent scenarios once changes are made.
+in a few different scenarios once changes are made.
 
 To test the functions run the command `npm test`
