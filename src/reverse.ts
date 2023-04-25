@@ -1,7 +1,4 @@
-console.log('Welcome to the technical exercise #1: reverseText');
-console.log();
-
-let executing = true;
+import { error, log } from 'console';
 
 type NumericRange<
   START extends number,
@@ -46,7 +43,7 @@ export const byteArrayToString = (array: EngLangByte[]): string => {
   return array.map(asciiCodeByteToLetter).join('');
 };
 
-export const reverseArray = <T>(array: T[]): T[] => {
+export const reverseArray = <T>(array: T[]) => {
   const iterations = Math.floor(array.length / 2) - 1;
   let iteratorSimetry = array.length;
 
@@ -63,46 +60,34 @@ export const reverseArray = <T>(array: T[]): T[] => {
   return array;
 };
 
-export const reverseTextUsingByteFormat = (text: string) => {
-  if (!text) return text;
-  /* The following comments are here just to showcase data transformation for a given text */
+export const reverseByteSentence = (bytes: EngLangByte[]) => {
+  const groupedByWords = bytes
+    .join(' ')
+    // '1 2 32 4'
+    .split(' 32 ');
+  // ['1 2','4']
 
-  // text = I'm nacho
-  let biteArrayWithoutSpaces = stringToByteArray(text).join(' ').split(' 32 ');
-  // [ '73 39 109', '110 97 99 104 111' ]
-  reverseArray(biteArrayWithoutSpaces);
-  // [ '110 97 99 104 111', '73 39 109' ]
+  // inverts the order of the words in the sentence
+  reverseArray(groupedByWords);
+  // ['4','1 2']
 
-  const finalByteArray = biteArrayWithoutSpaces
-    .join(' 32 ')
-    // '110 97 99 104 111 32 73 39 109'
-    .split(' ')
-    // ['110','97','99','104','111','32','73','39','109']
-    .map((num) => +num as EngLangByte);
-  // [110,97,99,104,111,32,73,39,109]
-
-  return byteArrayToString(finalByteArray);
-  // nacho I'm
+  // and returns them in the original format
+  return (
+    groupedByWords
+      .join(' 32 ')
+      // '4 32 1 2'
+      .split(' ')
+      // '['4','32','1','2']
+      .map((num) => +num as EngLangByte)
+    // '[4,32,1,2]
+  );
 };
 
-console.log(
-  reverseTextUsingByteFormat('my email is ignaciobarbarno@gmail.com')
-);
+// These two functions are the main ones to be called to solve the original premise
+export const inverAndCodifySentence = (text: string): EngLangByte[] => {
+  return text ? reverseByteSentence(stringToByteArray(text)) : [];
+};
 
-// Code below has the only purpose of showing some examples on the console
-// const examples: string[] = [
-//   'monkey',
-//   'the monkey',
-//   'the monkey jumped to the three',
-//   'oddly      spaced',
-// ];
-
-// examples.forEach((text, i) => {
-//   console.log('Initial array n#', i, ' is ', text);
-//   console.log('reversed it looks like this ', reverseText(text));
-//   console.log();
-// });
-
-// const text = 'my email is ignaciobarbarno@gmail.com';
-
-// console.log(stringToByteArray(text));
+export const decodifyInvertedSentence = (bytes: EngLangByte[]) => {
+  return bytes.length ? byteArrayToString(reverseByteSentence(bytes)) : '';
+};
