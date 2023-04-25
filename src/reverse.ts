@@ -1,5 +1,3 @@
-import { log } from 'console';
-
 console.log('Welcome to the technical exercise #1: reverseText');
 console.log();
 
@@ -27,7 +25,7 @@ the ASCII codes of the english sub-set
 /**
  * Valid ASCII ENG lang codes are numbers in the range 32-127
  */
-type EngLangByte = NumericRange<32, 127>;
+export type EngLangByte = NumericRange<32, 127>;
 
 /*
   This function was implemented assuming we don't want to just use
@@ -66,6 +64,7 @@ export const reverseArray = <T>(array: T[]): T[] => {
 };
 
 export const reverseTextUsingByteFormat = (text: string) => {
+  if (!text) return text;
   /* The following comments are here just to showcase data transformation for a given text */
 
   // text = I'm nacho

@@ -1,23 +1,27 @@
 {
-    "name": "igor-tech-test",
-    "description": "Nacho's resolution of Igor's tech test for the Dymium interview process.",
-    "authors": "github.com/ignacio-nacho-barbano",
-    "version": "1.0.0",
-    "main": "pathToMain",
-    "type": "module",
-    "scripts": {
-        "reverse-dev": "nodemon src/reverse.ts",
-        "unique-dev": "nodemon src/unique-words.ts",
-        "reverse": "tsc && node dist/reverse.js",
-        "unique": "tsc && node dist/unique-words.js",
-        "test": "node --test tests/",
-        "build": "tsc"
-    },
-    "devDependencies": {
-        "@types/node": "^18.15.13",
-        "nodemon": "^2.0.22",
-        "ts-node": "^10.9.1",
-        "tslib": "^2.5.0",
-        "typescript": "^5.0.4"
-    }
+  "name": "igor-tech-test",
+  "description": "Nacho's resolution of Igor's tech test for the Dymium interview process.",
+  "authors": "github.com/ignacio-nacho-barbano",
+  "version": "1.0.0",
+  "main": "pathToMain",
+  "type": "module",
+  "module": "commonjs",
+  "esModuleInterop": true,
+  "scripts": {
+    "reverse-dev": "nodemon src/reverse.ts",
+    "unique-dev": "nodemon src/unique-words.ts",
+    "reverse": "tsc && node dist/reverse.js",
+    "unique": "tsc && node dist/unique-words.js",
+    "build": "tsc",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.0",
+    "@types/node": "^18.16.0",
+    "jest": "^29.5.0",
+    "nodemon": "^2.0.22",
+    "ts-node": "^10.9.1",
+    "tslib": "^2.5.0",
+    "typescript": "^5.0.4"
+  }
 }

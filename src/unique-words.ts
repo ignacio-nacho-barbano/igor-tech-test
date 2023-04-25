@@ -1,6 +1,3 @@
-console.log('Welcome to the technical exercise #2: findUniqueWords');
-console.log();
-
 /*
   This function was implemented assuming we don't want to just use
   the JS native way for this exercise which would be
@@ -17,7 +14,7 @@ export const findUniqueWords = (words: string) => {
 
     pendingToCompare = pendingToCompare.filter((word) => word !== comparing);
 
-    if (pendingToCompare.length === initialCount) {
+    if (pendingToCompare.length === initialCount && comparing) {
       uniqueWords.push(comparing);
     }
   }
