@@ -7,9 +7,9 @@ console.log();
   export const findUniqueWords = (words: string[]) => [...(new Set(words))];
 */
 
-export const findUniqueWords = (words: string[]) => {
+export const findUniqueWords = (words: string) => {
   const uniqueWords: string[] = [];
-  let pendingToCompare = [...words];
+  let pendingToCompare = [...words.split(' ')];
 
   while (pendingToCompare.length) {
     const comparing = pendingToCompare.shift()!;
@@ -26,35 +26,21 @@ export const findUniqueWords = (words: string[]) => {
 };
 
 // Code below has the only purpose of showing some examples on the console
-const examples: string[][] = [
-  ['mono'],
-  ['mono', 'mono'],
-  ['rhcp', 'muse'],
-  ['rhcp', 'muse', 'rhcp'],
-  ['rhcp', 'muse', 'rhcp', 'muse'],
-  ['rhcp', 'muse', 'rhcp', 'soundgarden'],
-  ['audio', 'video', 'radio', 'internet'],
-  [
-    '💩',
-    '💩',
-    '💩',
-    '💩',
-    '🌎',
-    '🌳',
-    '🦖',
-    '💩',
-    '🦖',
-    '💩',
-    '🦖',
-    '💩',
-    '🦖',
-  ],
+const examples: string[] = [
+  'mono',
+  'mono mono',
+  'rhcp muse',
+  'rhcp muse rhcp',
+  'rhcp muse rhcp muse',
+  'rhcp muse rhcp soundgarden',
+  'audio video radio internet',
+  '💩 💩 💩 💩 🌎 🌳 🦖 💩 🦖 💩 🦖 💩 ',
 ];
 
 examples.forEach((example, i) => {
   const unique = findUniqueWords(example);
 
-  console.log(`given the array n#${i} being:`);
+  console.log(`given the string n#${i} being:`);
   console.log(example);
 
   if (unique.length > 1) {

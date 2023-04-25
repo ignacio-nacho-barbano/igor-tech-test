@@ -6,14 +6,17 @@
     "main": "pathToMain",
     "type": "module",
     "scripts": {
+        "reverse-dev": "nodemon src/reverse.ts",
+        "unique-dev": "nodemon src/unique-words.ts",
         "reverse": "tsc && node dist/reverse.js",
         "unique": "tsc && node dist/unique-words.js",
-        "test": "ts-node-test tests/",
-        "test-node": "node --test tests/",
+        "test": "node --test tests/",
         "build": "tsc"
     },
     "devDependencies": {
         "@types/node": "^18.15.13",
+        "nodemon": "^2.0.22",
+        "ts-node": "^10.9.1",
         "tslib": "^2.5.0",
         "typescript": "^5.0.4"
     }

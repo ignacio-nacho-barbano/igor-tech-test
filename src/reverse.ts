@@ -1,4 +1,6 @@
-console.log('Welcome to the technical exercise #1: reverseArray');
+import { log } from 'console';
+
+console.log('Welcome to the technical exercise #1: reverseText');
 console.log();
 
 let executing = true;
@@ -30,10 +32,23 @@ type EngLangByte = NumericRange<32, 127>;
 /*
   This function was implemented assuming we don't want to just use
   the JS native way for this exercise which would be
-  export const reverseArray = (array: EngLangByte[]) => array.reverse();
+  export const reverseText = (array: EngLangByte[]) => array.reverse();
 */
 
-export const reverseArray = (array: EngLangByte[]) => {
+export const letterToAsciiCodeByte = (letter: string) =>
+  letter.charCodeAt(0) as EngLangByte;
+
+export const asciiCodeByteToLetter = (byte) => String.fromCharCode(byte);
+
+export const stringToByteArray = (text: string): EngLangByte[] => {
+  return text.split('').map(letterToAsciiCodeByte);
+};
+
+export const byteArrayToString = (array: EngLangByte[]): string => {
+  return array.map(asciiCodeByteToLetter).join('');
+};
+
+export const reverseArray = <T>(array: T[]): T[] => {
   const iterations = Math.floor(array.length / 2) - 1;
   let iteratorSimetry = array.length;
 
@@ -50,17 +65,45 @@ export const reverseArray = (array: EngLangByte[]) => {
   return array;
 };
 
-// Code below has the only purpose of showing some examples on the console
-const arrays: EngLangByte[][] = [
-  [32, 54, 126, 127, 90],
-  [34, 32, 100, 99],
-  [127, 44, 40],
-  [32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44],
-  [32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45],
-];
+export const reverseTextUsingByteFormat = (text: string) => {
+  /* The following comments are here just to showcase data transformation for a given text */
 
-arrays.forEach((array, i) => {
-  console.log('Initial array n#', i, ' is ', array);
-  console.log('reversed it looks like this ', reverseArray(array));
-  console.log();
-});
+  // text = I'm nacho
+  let biteArrayWithoutSpaces = stringToByteArray(text).join(' ').split(' 32 ');
+  // [ '73 39 109', '110 97 99 104 111' ]
+  reverseArray(biteArrayWithoutSpaces);
+  // [ '110 97 99 104 111', '73 39 109' ]
+
+  const finalByteArray = biteArrayWithoutSpaces
+    .join(' 32 ')
+    // '110 97 99 104 111 32 73 39 109'
+    .split(' ')
+    // ['110','97','99','104','111','32','73','39','109']
+    .map((num) => +num as EngLangByte);
+  // [110,97,99,104,111,32,73,39,109]
+
+  return byteArrayToString(finalByteArray);
+  // nacho I'm
+};
+
+console.log(
+  reverseTextUsingByteFormat('my email is ignaciobarbarno@gmail.com')
+);
+
+// Code below has the only purpose of showing some examples on the console
+// const examples: string[] = [
+//   'monkey',
+//   'the monkey',
+//   'the monkey jumped to the three',
+//   'oddly      spaced',
+// ];
+
+// examples.forEach((text, i) => {
+//   console.log('Initial array n#', i, ' is ', text);
+//   console.log('reversed it looks like this ', reverseText(text));
+//   console.log();
+// });
+
+// const text = 'my email is ignaciobarbarno@gmail.com';
+
+// console.log(stringToByteArray(text));
