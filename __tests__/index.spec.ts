@@ -130,6 +130,20 @@ describe('Exercise #1', () => {
       expect(result).toEqual('');
     });
   });
+
+  describe('inverAndCodifySentence and decodifyInvertedSentence working together', () => {
+    it('should be a functional workflow to use both functions together to codify and decodify', () => {
+      const sentence = "This is Nacho's Tech Interview Tests";
+      const codified = inverAndCodifySentence(sentence);
+      expect(decodifyInvertedSentence(codified)).toEqual(sentence);
+    });
+
+    it('should be not throw given an empty string', () => {
+      const sentence = '';
+      const codified = inverAndCodifySentence(sentence);
+      expect(decodifyInvertedSentence(codified)).toEqual(sentence);
+    });
+  });
 });
 
 describe('Exercise #2', () => {
