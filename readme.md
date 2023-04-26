@@ -8,17 +8,12 @@
     The array contains ASCII codes for English language text. The function must
     reverse the order of words _in place_ without calling any library functions.
 
-To see this run the command `npm run reverse`
+To see this run the command `npm run test` and see the describe related to the `Exercise #1`
 
 ## The Second Was a Unique Word Finder, equivalent to a custom Set
 
 2. Write a function in JavaScript or TypeScript that takes a string of text as a parameter that returns the count of unique words.
 
-To see this run the command `npm run unique`
+To see this run the command `npm run unique` and see the describe related to the `Exercise #2`
 
-## Tests
-
-You can also test these files to make sure they are working properly
-in a few different scenarios once changes are made.
-
-To test the functions run the command `npm test`
+### Alternatively you can run tests with vs-code built in test runner
