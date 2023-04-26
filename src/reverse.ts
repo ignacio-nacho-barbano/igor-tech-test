@@ -1,5 +1,3 @@
-import { error, log } from 'console';
-
 type NumericRange<
   START extends number,
   END extends number,
