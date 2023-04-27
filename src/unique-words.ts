@@ -12,13 +12,9 @@ export const countUniqueWords = (words: string) => {
 
   while (pendingToCount.length) {
     const comparing = pendingToCount.shift()!;
-    const initialCount = pendingToCount.length;
 
+    count++;
     pendingToCount = pendingToCount.filter((word) => word !== comparing);
-
-    if (comparing && pendingToCount.length === initialCount) {
-      count++;
-    }
   }
 
   return count;

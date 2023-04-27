@@ -156,21 +156,16 @@ describe('Exercise #2', () => {
       expect(countUniqueWords('audio')).toEqual(1);
     });
 
-    it('it should return all of the words in the array if the string does not contain any repeated word', () => {
+    it('it should count all different words', () => {
       expect(countUniqueWords('audio      #radio  video')).toEqual(3);
     });
 
-    it('it should return an empty array given there are no unique words', () => {
+    it('it should count all different words no matter how many times they repeat or in which variation', () => {
       expect(
         countUniqueWords(
           'audio radio video audio monster monster.monster@monster #MONSTER% radio video'
         )
-      ).toEqual(0);
-    });
-    it('it should return only the words that do not repeat given any sort of repetitions', () => {
-      expect(
-        countUniqueWords('#audio audio .audio internet radio vide internet')
-      ).toEqual(2);
+      ).toEqual(4);
     });
   });
 });
