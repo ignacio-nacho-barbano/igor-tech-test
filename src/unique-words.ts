@@ -1,23 +1,25 @@
 /*
   This function was implemented assuming we don't want to just use
   the JS native way for this exercise which would be
-  export const findUniqueWords = (words: string[]) => [...(new Set(words))];
+  export const countUniqueWords = (words: string[]) => [...(new Set(words))];
 */
 
-export const findUniqueWords = (words: string) => {
-  const uniqueWords: string[] = [];
-  let pendingToCompare = [...words.split(' ')];
+export const countUniqueWords = (words: string) => {
+  const lowercasedWords = words.toLocaleLowerCase();
+  const wordsRegex = /(\w+)/g;
+  let count = 0;
+  let pendingToCount = Array.from(lowercasedWords.match(wordsRegex) || []);
 
-  while (pendingToCompare.length) {
-    const comparing = pendingToCompare.shift()!;
-    const initialCount = pendingToCompare.length;
+  while (pendingToCount.length) {
+    const comparing = pendingToCount.shift()!;
+    const initialCount = pendingToCount.length;
 
-    pendingToCompare = pendingToCompare.filter((word) => word !== comparing);
+    pendingToCount = pendingToCount.filter((word) => word !== comparing);
 
-    if (comparing && pendingToCompare.length === initialCount) {
-      uniqueWords.push(comparing);
+    if (comparing && pendingToCount.length === initialCount) {
+      count++;
     }
   }
 
-  return uniqueWords;
+  return count;
 };

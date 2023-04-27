@@ -9,7 +9,7 @@ import {
   inverAndCodifySentence,
   decodifyInvertedSentence,
 } from '../src/reverse';
-import { findUniqueWords } from '../src/unique-words';
+import { countUniqueWords } from '../src/unique-words';
 
 const emailSentence = 'my email is ignaciobarbano@gmail.com!';
 const codifiedEmailSentence: EngLangByte[] = [
@@ -147,32 +147,30 @@ describe('Exercise #1', () => {
 });
 
 describe('Exercise #2', () => {
-  describe('findUniqueWords function', () => {
+  describe('countUniqueWords function', () => {
     it('it should not throw given an empty string', () => {
-      expect(findUniqueWords('')).toEqual([]);
+      expect(countUniqueWords('')).toEqual(0);
     });
 
     it('it should not throw given a single word', () => {
-      expect(findUniqueWords('audio')).toEqual(['audio']);
+      expect(countUniqueWords('audio')).toEqual(1);
     });
 
     it('it should return all of the words in the array if the string does not contain any repeated word', () => {
-      expect(findUniqueWords('audio radio video')).toEqual([
-        'audio',
-        'radio',
-        'video',
-      ]);
+      expect(countUniqueWords('audio      #radio  video')).toEqual(3);
     });
 
     it('it should return an empty array given there are no unique words', () => {
-      expect(findUniqueWords('audio radio video audio radio video')).toEqual(
-        []
-      );
+      expect(
+        countUniqueWords(
+          'audio radio video audio monster monster.monster@monster #MONSTER% radio video'
+        )
+      ).toEqual(0);
     });
     it('it should return only the words that do not repeat given any sort of repetitions', () => {
       expect(
-        findUniqueWords('audio audio audio internet radio vide internet')
-      ).toEqual(['radio', 'vide']);
+        countUniqueWords('#audio audio .audio internet radio vide internet')
+      ).toEqual(2);
     });
   });
 });
