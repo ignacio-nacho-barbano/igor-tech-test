@@ -41,44 +41,50 @@ export const byteArrayToString = (array: EngLangByte[]): string => {
   return array.map(asciiCodeByteToLetter).join('');
 };
 
-export const reverseArray = <T>(array: T[]) => {
-  const iterations = Math.floor(array.length / 2) - 1;
-  let iteratorSimetry = array.length;
+export const reverseArray = <T>(
+  array: T[],
+  segmentStart?: number | null,
+  segmentEnd?: number | null
+) => {
+  const start = segmentStart || 0;
+  const end = segmentEnd + 1 || array.length;
+  const totalIterations = Math.floor((end - start) / 2);
 
-  for (let i = 0; i <= iterations; i++) {
+  let iteratorSimetry = end;
+  let iterations = 0;
+
+  for (let index = start; iterations < totalIterations; index++) {
+    iterations++;
     iteratorSimetry--;
 
-    const byteA = array[i];
-    const byteB = array[iteratorSimetry];
+    const elementA = array[index];
+    const elementB = array[iteratorSimetry];
 
-    array[i] = byteB;
-    array[iteratorSimetry] = byteA;
+    array[index] = elementB;
+    array[iteratorSimetry] = elementA;
   }
 
   return array;
 };
 
 export const reverseByteSentence = (bytes: EngLangByte[]) => {
-  const groupedByWords = bytes
-    .join(' ')
-    // '1 2 32 4'
-    .split(' 32 ');
-  // ['1 2','4']
+  let wordStart = null;
 
-  // inverts the order of the words in the sentence
-  reverseArray(groupedByWords);
-  // ['4','1 2']
+  for (let i = 0; i < bytes.length; i++) {
+    const nextChar = bytes[i + 1];
+    const isLastCharInWord = i + 1 === bytes.length || nextChar === 32;
 
-  // and returns them in the original format
-  return (
-    groupedByWords
-      .join(' 32 ')
-      // '4 32 1 2'
-      .split(' ')
-      // '['4','32','1','2']
-      .map((num) => +num as EngLangByte)
-    // '[4,32,1,2]
-  );
+    if (wordStart === null && bytes[i] !== 32) {
+      wordStart = i;
+    } else if (wordStart !== null && isLastCharInWord) {
+      reverseArray(bytes, wordStart, i);
+      wordStart = null;
+    }
+  }
+
+  reverseArray(bytes);
+
+  return bytes;
 };
 
 // These two functions are the main ones to be called to solve the original premise

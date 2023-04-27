@@ -26,12 +26,36 @@ const invertedCodifiedEmailSentence: EngLangByte[] = [
 
 describe('Exercise #1', () => {
   describe('reverseArray function', () => {
+    it('should reverse the entire array when no segments are specified', () => {
+      expect(reverseArray([1, 2, 3, 4, 5])).toEqual([5, 4, 3, 2, 1]);
+    });
+
+    it('should reverse the specified segment given only the start', () => {
+      expect(reverseArray([1, 2, 3, 4, 5], 3)).toEqual([1, 2, 3, 5, 4]);
+    });
+
+    it('should reverse the specified segment given only the end', () => {
+      expect(reverseArray([1, 2, 3, 4, 5], null, 2)).toEqual([3, 2, 1, 4, 5]);
+    });
+
+    it('should reverse the specified segment given only the end for an even count', () => {
+      expect(reverseArray([1, 2, 3, 4, 5], null, 1)).toEqual([2, 1, 3, 4, 5]);
+    });
+
+    it('should reverse the specified segment', () => {
+      expect(reverseArray([1, 2, 3, 4, 5], null, 2)).toEqual([3, 2, 1, 4, 5]);
+    });
+
     it('should reverse an array with and odd amount of elements', () => {
       expect(reverseArray([1, 2, 3])).toEqual([3, 2, 1]);
     });
 
     it('should reverse an array with and even amount of elements', () => {
       expect(reverseArray([1, 2, 3, 4])).toEqual([4, 3, 2, 1]);
+    });
+
+    it('should reverse an array with only two elements', () => {
+      expect(reverseArray([2, 1])).toEqual([1, 2]);
     });
 
     it('should not throw given an empty array', () => {
@@ -93,6 +117,12 @@ describe('Exercise #1', () => {
     it('it should take in a byte sentence and reverse its order', () => {
       const result = reverseByteSentence(codifiedEmailSentence);
       expect(byteArrayToString(result)).toEqual(invertedEmailSentence);
+    });
+
+    it('it should reverse the sentence properly despite repetition of spaces', () => {
+      const sentence = '  5 add more      spaces';
+      const result = reverseByteSentence(stringToByteArray(sentence));
+      expect(byteArrayToString(result)).toEqual('spaces      more 5 add  ');
     });
   });
 
